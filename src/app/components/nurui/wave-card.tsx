@@ -11,7 +11,7 @@ interface IProps {
   description: string;
   buttonText: string;
   src: StaticImageData
-  github?: string
+  github: string
 }
 
 export default function WaveCard({
@@ -138,7 +138,7 @@ export default function WaveCard({
               </p>
               <div className="flex justify-between items-center">
                 <a
-                  href="#"
+                  href={github}
                   className=" flex items-center text-xs font-medium "
                 >
                   <BorderAnimationButton text={buttonText} />

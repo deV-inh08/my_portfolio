@@ -27,7 +27,8 @@ export const Project = () => {
             title: "My Portfolio",
             description: "A personal portfolio showcasing my full-stack projects, built with Next.js and styled using NurUI for a clean, responsive design.",
             buttonText: 'Visit',
-            src: portfolio
+            src: portfolio,
+            github: 'https://github.com/deV-inh08/my_portfolio'
         }
     ]
     return (
@@ -38,7 +39,7 @@ export const Project = () => {
                 </h3>
                 <div className='container relative z-10 grid md:grid-cols-3 gap-10 items-center max-w-6xl mx-auto mt-10'>
                     {objectData.map((item, index) => {
-                        return <WaveCard title={item.title} description={item.description} key={index} buttonText={item.buttonText} tags={item.tags} src={item.src}></WaveCard>
+                        return <WaveCard title={item.title} description={item.description} key={index} buttonText={item.buttonText} tags={item.tags} src={item.src} github={item.github}></WaveCard>
                     })}
                 </div>
             </div>
