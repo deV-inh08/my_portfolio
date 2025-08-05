@@ -17,6 +17,7 @@ const imageUrls = [
     'https://skillicons.dev/icons?i=gcp',
     'https://skillicons.dev/icons?i=js',
     'https://skillicons.dev/icons?i=node',
+    'https://skillicons.dev/icons?i=jest',
 ];
 
 const BallCanvas = () => {
