@@ -47,7 +47,6 @@ const BallCanvas: React.FC = () => {
     const animate = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         const balls = ballsRef.current;
-
         // Va chạm
         for (let i = 0; i < balls.length; i++) {
             for (let j = i + 1; j < balls.length; j++) {
@@ -57,7 +56,6 @@ const BallCanvas: React.FC = () => {
                 const dy = b.y - a.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 const minDistance = a.radius + b.radius;
-
                 if (distance < minDistance) {
                     a.vx *= -1;
                     a.vy *= -1;
@@ -66,7 +64,6 @@ const BallCanvas: React.FC = () => {
                 }
             }
         }
-
         // Di chuyển
         balls.forEach((ball) => {
             if (ball.x + ball.radius >= canvas.width || ball.x - ball.radius <= 0) {
@@ -75,10 +72,8 @@ const BallCanvas: React.FC = () => {
             if (ball.y + ball.radius >= canvas.height || ball.y - ball.radius <= 0) {
                 ball.vy *= -1;
             }
-
             ball.x += ball.vx;
             ball.y += ball.vy;
-
             ctx.drawImage(
                 ball.img,
                 ball.x - ball.radius,
@@ -87,7 +82,6 @@ const BallCanvas: React.FC = () => {
                 ball.radius * 2
             );
         });
-
         frameIdRef.current = requestAnimationFrame(() => animate(ctx, canvas));
     };
 
@@ -104,12 +98,10 @@ const BallCanvas: React.FC = () => {
 
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
-
         Promise.all(imageUrls.map(loadImage)).then((imgs) => {
             ballsRef.current = imgs.map((img) => createBall(img, canvas));
             animate(ctx, canvas);
         });
-
         return () => {
             if (frameIdRef.current) {
                 cancelAnimationFrame(frameIdRef.current);

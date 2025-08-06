@@ -1,6 +1,9 @@
+'use client'
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import gsap from "gsap";
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 import { cn } from "../../lib/utils"
 
@@ -59,9 +62,15 @@ export { Button, buttonVariants }
 import { ButtonFrame } from "@/app/components/nurui/future-button";
 
 export default function FutureButtonDemo() {
+  gsap.registerPlugin(ScrollToPlugin);
   return (
     <div >
-      <ButtonFrame >
+      <ButtonFrame onClick={() => {
+        gsap.to(window, {
+          duration: 1,
+          scrollTo: '#projects'
+        })
+      }}>
         View Projects
       </ButtonFrame>
     </div>

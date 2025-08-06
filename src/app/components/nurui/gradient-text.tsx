@@ -1,7 +1,10 @@
-import React, { ReactNode } from "react";
+import { useGSAP } from "@gsap/react";
+import React, { useRef } from "react";
+import gsap from "gsap";
+import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
 
 interface GradientTextProps {
-  children: ReactNode;
+  children: string;
   className?: string;
   colors?: string[];
   animationSpeed?: number;
@@ -19,10 +22,20 @@ export default function GradientText({
     backgroundImage: `linear-gradient(to right, ${colors.join(", ")})`,
     animationDuration: `${animationSpeed}s`,
   };
+  const nameRef = useRef<HTMLDivElement | null>(null)
+
+  gsap.registerPlugin(ScrambleTextPlugin, useGSAP)
+  useGSAP(() => {
+    gsap.to(nameRef.current, {
+      scrambleText: children,
+      delay: 0.5,
+      duration: 4
+    })
+  })
 
   return (
     <div
-      className={`relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
+      className={`relative flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
     >
       {showBorder && (
         <div
@@ -45,6 +58,7 @@ export default function GradientText({
         </div>
       )}
       <div
+        ref={nameRef}
         className="inline-block relative z-2 text-transparent bg-cover animate-gradient"
         style={{
           ...gradientStyle,
@@ -53,7 +67,6 @@ export default function GradientText({
           backgroundSize: "300% 100%",
         }}
       >
-        {children}
       </div>
     </div>
   );

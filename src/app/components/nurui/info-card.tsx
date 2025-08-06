@@ -1,6 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
 import "../../styles/info-card.css"; // Ensure you have the CSS file for styles
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // RTL detection for Hebrew/Arabic
 function isRTL(text: string) {
@@ -45,8 +49,30 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   effectBgColor = "#ffd700",
   contentPadding = "10px 16px",
 }) => {
+  gsap.registerPlugin(SplitText, ScrollTrigger, useGSAP)
+
   const [hovered, setHovered] = useState(false);
   const borderRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLParagraphElement | null>(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+
+  useGSAP(() => {
+    gsap.from(contentRef.current, {
+      scrollTrigger: {
+        trigger: borderRef.current,
+        start: 'top 80%',
+        toggleActions: 'play  pause resume pause',
+      },
+
+      rotationX: -100,
+      y: 100,
+      transformOrigin: "50% 50% -160px",
+      opacity: 0,
+      duration: 1,
+      ease: "power3",
+      stagger: 0.25
+    })
+  })
 
   // Mouse movement for rotating border
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -106,6 +132,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
       }
     >
       <div
+        ref={containerRef}
         style={{
           display: "grid",
           gridTemplateRows: 'auto 1fr',
@@ -164,6 +191,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
           />
         </h1>
         <p
+          ref={contentRef}
           style={{
             fontSize: 14,
             color: textColor,
