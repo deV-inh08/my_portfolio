@@ -28,7 +28,7 @@ export default function GradientText({
   useGSAP(() => {
     gsap.to(nameRef.current, {
       scrambleText: children,
-      delay: 0.5,
+      delay: 0,
       duration: 4
     })
   })

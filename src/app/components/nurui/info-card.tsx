@@ -36,7 +36,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   title,
   description,
   width = "100%",
-  height = "auto",
+  height = "100%",
   borderColor = "#ffd700",
   borderBgColor = "#242424",
   borderWidth = 3,
@@ -155,7 +155,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
             overflow: "hidden",
             direction: titleDirection,
             width: "auto",
-            height: '20px'
+            height: '35px'
           }}
         >
           <span
@@ -196,14 +196,14 @@ export const InfoCard: React.FC<InfoCardProps> = ({
             fontSize: 14,
             color: textColor,
             display: "-webkit-box",
-            WebkitLineClamp: 9,
+            WebkitLineClamp: 'auto',
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
             direction: descDirection,
             marginBottom: 0,
             paddingBottom: 0,
             minHeight: 0,
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           {description}

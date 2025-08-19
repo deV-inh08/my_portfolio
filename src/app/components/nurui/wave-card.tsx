@@ -120,7 +120,7 @@ export default function WaveCard({
             <div className="p-4 flex justify-center relative">
               <div className="w-full h-48 rounded-xl border border-[#fffdf6] inner-glow overflow-hidden relative">
                 <div className="absolute inset-0">
-                  <Image className="w-full h-full animate-pulse" src={src} alt="image" />
+                  <Image className="w-full h-full " src={src} alt="image" />
 
                 </div>
               </div>

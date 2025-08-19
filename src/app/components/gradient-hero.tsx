@@ -39,7 +39,7 @@ const GradientHero = () => {
             </div>
 
             <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-                <div className="space-y-8">
+                <div className="space-y-10 md:space-y-8 ">
                     <div className="inline-block">
                         <div className="relative px-3 py-1 text-sm font-medium rounded-full bg-yellow-500/50 backdrop-blur-sm border border-yellow-500/20 mb-4 mt-4">
                             <span className="relative z-10 text-white">
@@ -50,7 +50,7 @@ const GradientHero = () => {
                     </div>
                     <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
                         <span className="block">Hi, Im</span>
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 animate-text-shimmer bg-[length:200%_100%]">
+                        <span className=" bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 animate-text-shimmer bg-[length:200%_100%]">
                             <GradientText
                                 animationSpeed={3}
                                 className="font-sans">
