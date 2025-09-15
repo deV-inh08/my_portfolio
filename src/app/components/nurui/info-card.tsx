@@ -44,10 +44,10 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   cardBgColor = "#000",
   textColor = "#f5f5f5",
   hoverTextColor = "#242424",
-  fontFamily = "'Roboto Mono', monospace",
-  rtlFontFamily = "'Montserrat', sans-serif",
+  fontFamily = "'Geist', sans-serif",
+  rtlFontFamily = "'Geist', sans-serif",
   effectBgColor = "#ffd700",
-  contentPadding = "10px 16px",
+  contentPadding = "10px 10px",
 }) => {
   gsap.registerPlugin(SplitText, ScrollTrigger, useGSAP)
 
@@ -193,7 +193,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         <p
           ref={contentRef}
           style={{
-            fontSize: 14,
+            fontSize: 17,
             color: textColor,
             display: "-webkit-box",
             WebkitLineClamp: 'auto',
@@ -203,7 +203,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
             marginBottom: 0,
             paddingBottom: 0,
             minHeight: 0,
-            textAlign: "left",
+            textAlign: "center",
           }}
         >
           {description}
